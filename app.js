@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const hbs = require('hbs');
+require('./hbs/helpers');
 
 app.use(express.static(__dirname + '/public'))
     //
@@ -12,16 +13,14 @@ app.get('/', (req, res) => {
     res.render('home', {
         info: 'Home',
         nombre: 'Joaquin',
-        anio: new Date().getFullYear()
     });
 });
 
-app.get('/about/', (rep, res) => {
+app.get('/about', (rep, res) => {
     res.render('about', {
         info: 'About',
         nombre: 'Jairo',
-        anio: new Date().getFullYear()
-    })
-})
-
+    });
+});
+console.log(`PUERTO: ${port}`);
 app.listen(port);
